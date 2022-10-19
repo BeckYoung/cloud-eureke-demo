@@ -1,0 +1,28 @@
+# 设置启动的环境
+spring:
+  profiles:
+    active: pro
+---
+# 线上环境
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.235.114.165:3306/db_user?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root@qing#429
+  application:
+    name: userservice # eureka的client名称
+  config:
+    activate:
+      on-profile: pro
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url: # eureka的地址信息
+      defaultZone: http://localhost:10001/eureka
+
+logging:
+  level:
+    com.example.userservice: debug
